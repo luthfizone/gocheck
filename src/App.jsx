@@ -1,4 +1,5 @@
 import item from "./data/sample.json";
+import ProptTypes from "prop-types";
 
 function App() {
   return (
@@ -35,10 +36,10 @@ function NoteList() {
   );
 }
 
-function List(props) {
+function List({ items }) {
   return (
     <>
-      {props.items.map((item) => (
+      {items.map((item) => (
         <li key={item.id}>
           <input type="checkbox" name="item" id={`item-${item.id}`} />
           {item.name}
@@ -48,6 +49,10 @@ function List(props) {
     </>
   );
 }
+
+List.propTypes = {
+  items: ProptTypes.array.isRequired,
+};
 
 function Stats() {
   return (
