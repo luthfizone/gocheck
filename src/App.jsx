@@ -40,7 +40,7 @@ function NoteList() {
 
 function Stats() {
   return (
-    <footer>
+    <footer className="stats">
       <span>You have a new notes x which already on the checklist</span>
     </footer>
   );
