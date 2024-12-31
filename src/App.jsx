@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ProptTypes from "prop-types";
+import PropsTypes from "prop-types";
 // import item from "./data/sample.json";
 
 function App() {
@@ -86,7 +86,7 @@ function Form({ onAddItem }) {
 }
 
 Form.propTypes = {
-  onAddItem: ProptTypes.func,
+  onAddItem: PropsTypes.func,
 };
 
 function NoteList({ items, onDeleteItem, onHandleToggleDone }) {
@@ -104,9 +104,9 @@ function NoteList({ items, onDeleteItem, onHandleToggleDone }) {
 }
 
 NoteList.propTypes = {
-  items: ProptTypes.array.isRequired,
-  onDeleteItem: ProptTypes.func.isRequired,
-  onHandleToggleDone: ProptTypes.func.isRequired,
+  items: PropsTypes.array.isRequired,
+  onDeleteItem: PropsTypes.func.isRequired,
+  onHandleToggleDone: PropsTypes.func.isRequired,
 };
 
 function List({ items, onDeleteItem, onHandleToggleDone }) {
@@ -134,9 +134,9 @@ function List({ items, onDeleteItem, onHandleToggleDone }) {
 }
 
 List.propTypes = {
-  items: ProptTypes.array.isRequired,
-  onDeleteItem: ProptTypes.func.isRequired,
-  onHandleToggleDone: ProptTypes.func.isRequired,
+  items: PropsTypes.array.isRequired,
+  onDeleteItem: PropsTypes.func.isRequired,
+  onHandleToggleDone: PropsTypes.func.isRequired,
 };
 
 function Stats() {
