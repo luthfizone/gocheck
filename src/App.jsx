@@ -16,11 +16,30 @@ function App() {
     setNotes(newList);
   }
 
+  function handleToggleDone(id) {
+    const updatedNotes = notes.map((item) => {
+      if (item.id === id) {
+        return {
+          ...item,
+          done: !item.done,
+        };
+      }
+
+      return item;
+    });
+
+    setNotes(updatedNotes);
+  }
+
   return (
     <div className="app-container">
       <Logo />
       <Form onAddItem={handleAddItems} />
-      <NoteList items={notes} onDeleteItem={handleDeleteItems} />
+      <NoteList
+        items={notes}
+        onDeleteItem={handleDeleteItems}
+        onHandleToggleDone={handleToggleDone}
+      />
       <Stats />
     </div>
   );
@@ -70,11 +89,15 @@ Form.propTypes = {
   onAddItem: ProptTypes.func,
 };
 
-function NoteList({ items, onDeleteItem }) {
+function NoteList({ items, onDeleteItem, onHandleToggleDone }) {
   return (
     <div className="list">
       <ul>
-        <List items={items} onDeleteItem={onDeleteItem} />
+        <List
+          items={items}
+          onDeleteItem={onDeleteItem}
+          onHandleToggleDone={onHandleToggleDone}
+        />
       </ul>
     </div>
   );
@@ -83,15 +106,24 @@ function NoteList({ items, onDeleteItem }) {
 NoteList.propTypes = {
   items: ProptTypes.array.isRequired,
   onDeleteItem: ProptTypes.func.isRequired,
+  onHandleToggleDone: ProptTypes.func.isRequired,
 };
 
-function List({ items, onDeleteItem }) {
+function List({ items, onDeleteItem, onHandleToggleDone }) {
   return (
     <>
-      {items.map(({ id, inputValue }) => (
+      {items.map(({ id, inputValue, done }) => (
         <li key={id}>
-          <input type="checkbox" name="item" id={`item-${id}`} />
-          {inputValue}
+          <input
+            type="checkbox"
+            value={done}
+            onChange={() => onHandleToggleDone(id)}
+            name="item"
+            id={`item-${id}`}
+          />
+          <span style={{ textDecoration: done ? "line-through" : "" }}>
+            {inputValue}
+          </span>
           <button className="btn-remove" onClick={() => onDeleteItem(id)}>
             Remove
           </button>
@@ -104,6 +136,7 @@ function List({ items, onDeleteItem }) {
 List.propTypes = {
   items: ProptTypes.array.isRequired,
   onDeleteItem: ProptTypes.func.isRequired,
+  onHandleToggleDone: ProptTypes.func.isRequired,
 };
 
 function Stats() {
