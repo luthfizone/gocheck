@@ -11,11 +11,16 @@ function App() {
     setNotes(newList);
   }
 
+  function handleDeleteItems(id) {
+    const newList = notes.filter((note) => note.id !== id);
+    setNotes(newList);
+  }
+
   return (
     <div className="app-container">
       <Logo />
       <Form onAddItem={handleAddItems} />
-      <NoteList items={notes} />
+      <NoteList items={notes} onDeleteItem={handleDeleteItems} />
       <Stats />
     </div>
   );
@@ -35,7 +40,7 @@ function Form({ onAddItem }) {
       return;
     } else if (inputValue.trim()) {
       const newItem = {
-        id: new Date(),
+        id: new Date().getTime(),
         inputValue,
         done: false,
       };
@@ -65,28 +70,31 @@ Form.propTypes = {
   onAddItem: ProptTypes.func,
 };
 
-function NoteList({ items }) {
+function NoteList({ items, onDeleteItem }) {
   return (
     <div className="list">
       <ul>
-        <List items={items} />
+        <List items={items} onDeleteItem={onDeleteItem} />
       </ul>
     </div>
   );
 }
 
 NoteList.propTypes = {
-  items: ProptTypes.objectOf(ProptTypes.array).isRequired,
+  items: ProptTypes.array.isRequired,
+  onDeleteItem: ProptTypes.func.isRequired,
 };
 
-function List({ items }) {
+function List({ items, onDeleteItem }) {
   return (
     <>
       {items.map(({ id, inputValue }) => (
         <li key={id}>
           <input type="checkbox" name="item" id={`item-${id}`} />
           {inputValue}
-          <button className="btn-remove">Remove</button>
+          <button className="btn-remove" onClick={() => onDeleteItem(id)}>
+            Remove
+          </button>
         </li>
       ))}
     </>
@@ -95,6 +103,7 @@ function List({ items }) {
 
 List.propTypes = {
   items: ProptTypes.array.isRequired,
+  onDeleteItem: ProptTypes.func.isRequired,
 };
 
 function Stats() {
