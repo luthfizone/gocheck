@@ -61,6 +61,10 @@ function Form({ onAddItem }) {
   );
 }
 
+Form.propTypes = {
+  onAddItem: ProptTypes.func,
+};
+
 function NoteList({ items }) {
   return (
     <div className="list">
@@ -70,6 +74,10 @@ function NoteList({ items }) {
     </div>
   );
 }
+
+NoteList.propTypes = {
+  items: ProptTypes.objectOf(ProptTypes.array).isRequired,
+};
 
 function List({ items }) {
   return (
