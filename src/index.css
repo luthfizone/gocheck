@@ -1,0 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&display=swap");
+
+/* Reset and default CSS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: teal; /* just for display */
+  font-size: 2.4rem;
+  font-family: sans-serif;
+  color: #f5efe7;
+  font-family: "Quicksand", serif;
+  font-weight: 500;
+}
