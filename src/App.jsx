@@ -10,7 +10,7 @@ function App() {
 }
 
 function Logo() {
-  return <span>GoCheck</span>;
+  return <span className="logo">GoCheck</span>;
 }
 
 function Form() {
