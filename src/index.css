@@ -96,6 +96,12 @@ form button:hover {
   align-content: start;
 }
 
+[type="checkbox"] {
+  height: 1.5rem;
+  width: 1.5rem;
+  accent-color: #db6f18;
+}
+
 .list li {
   display: flex;
   align-items: center;

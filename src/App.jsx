@@ -37,9 +37,11 @@ function List() {
   return (
     <>
       <li>
+        <input type="checkbox" name="item" id="item" />
         Eats <button className="btn-remove">Remove</button>
       </li>
       <li>
+        <input type="checkbox" name="item" id="item" />
         Drinks <button className="btn-remove">Remove</button>
       </li>
     </>
