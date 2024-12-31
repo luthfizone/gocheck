@@ -27,14 +27,22 @@ function NoteList() {
   return (
     <div className="list">
       <ul>
-        <li>
-          Eats <button className="btn-remove">Remove</button>
-        </li>
-        <li>
-          Drinks <button className="btn-remove">Remove</button>
-        </li>
+        <List />
       </ul>
     </div>
+  );
+}
+
+function List() {
+  return (
+    <>
+      <li>
+        Eats <button className="btn-remove">Remove</button>
+      </li>
+      <li>
+        Drinks <button className="btn-remove">Remove</button>
+      </li>
+    </>
   );
 }
 
