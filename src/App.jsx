@@ -25,14 +25,16 @@ function Form() {
 
 function NoteList() {
   return (
-    <ul>
-      <li>
-        Eats <button>Remove</button>
-      </li>
-      <li>
-        Drinks <button>Remove</button>
-      </li>
-    </ul>
+    <div className="list">
+      <ul>
+        <li>
+          Eats <button className="btn-remove">Remove</button>
+        </li>
+        <li>
+          Drinks <button className="btn-remove">Remove</button>
+        </li>
+      </ul>
+    </div>
   );
 }
 
