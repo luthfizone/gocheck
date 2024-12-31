@@ -1,0 +1,8 @@
+[
+  { "id": 1, "name": "Eats", "done": false },
+  { "id": 2, "name": "Drinks", "done": false },
+  { "id": 3, "name": "Coding", "done": false },
+  { "id": 4, "name": "Fishing", "done": false },
+  { "id": 5, "name": "Riding", "done": false },
+  { "id": 6, "name": "Cycling", "done": false }
+]

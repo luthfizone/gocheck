@@ -1,3 +1,5 @@
+import item from "./data/sample.json";
+
 function App() {
   return (
     <div className="app-container">
@@ -27,23 +29,22 @@ function NoteList() {
   return (
     <div className="list">
       <ul>
-        <List />
+        <List items={item} />
       </ul>
     </div>
   );
 }
 
-function List() {
+function List(props) {
   return (
     <>
-      <li>
-        <input type="checkbox" name="item" id="item" />
-        Eats <button className="btn-remove">Remove</button>
-      </li>
-      <li>
-        <input type="checkbox" name="item" id="item" />
-        Drinks <button className="btn-remove">Remove</button>
-      </li>
+      {props.items.map((item) => (
+        <li key={item.id}>
+          <input type="checkbox" name="item" id={`item-${item.id}`} />
+          {item.name}
+          <button className="btn-remove">Remove</button>
+        </li>
+      ))}
     </>
   );
 }
