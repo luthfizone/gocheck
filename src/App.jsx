@@ -36,6 +36,14 @@ function App() {
     setSortBy(e.target.value);
   }
 
+  function handleClearData() {
+    const confirm = window.confirm("Are you sure want to delete the notes?");
+
+    if (confirm) {
+      setNotes([]);
+    }
+  }
+
   return (
     <div className="app-container">
       <Logo />
@@ -46,13 +54,17 @@ function App() {
         onHandleToggleDone={handleToggleDone}
         sortBy={sortBy}
       />
-      <Select sortBy={sortBy} onSortBy={handleSortBy} />
+      <Select
+        sortBy={sortBy}
+        onSortBy={handleSortBy}
+        onClearData={handleClearData}
+      />
       <Stats items={notes} />
     </div>
   );
 }
 
-function Select({ sortBy, onSortBy }) {
+function Select({ sortBy, onSortBy, onClearData }) {
   return (
     <div className="actions">
       <select value={sortBy} onChange={onSortBy}>
@@ -60,6 +72,9 @@ function Select({ sortBy, onSortBy }) {
         <option value="title">Sort by title</option>
         <option value="status">Sort by status</option>
       </select>
+      <button className="btn-clear" onClick={() => onClearData()}>
+        Clear
+      </button>
     </div>
   );
 }

@@ -131,6 +131,16 @@ form button:hover {
   margin: 0 auto;
 }
 
+.btn-clear {
+  margin-left: 1.5rem;
+}
+
+.btn-clear:hover {
+  background-color: red;
+  color: white;
+  border: none;
+}
+
 /* Stats */
 .stats {
   background-color: #b5957e;
