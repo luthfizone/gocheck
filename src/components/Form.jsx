@@ -1,9 +1,23 @@
 import { useState } from "react";
 import PropsTypes from "prop-types";
 
+// Form.jsx
+
+import { useState } from "react";
+import PropsTypes from "prop-types";
+
+/**
+ * Form component for adding new notes.
+ * @param {Object} props - Component props.
+ * @param {Function} props.onAddItem - Callback to add a new item.
+ */
 function Form({ onAddItem }) {
   const [inputValue, setInputValue] = useState("");
 
+  /**
+   * Handles the form submission.
+   * @param {Event} e - The form submit event.
+   */
   const handleSubmit = (e) => {
     e.preventDefault();
 

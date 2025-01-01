@@ -1,5 +1,14 @@
+// List.jsx
+
 import PropsTypes from "prop-types";
 
+/**
+ * List component for rendering individual note items.
+ * @param {Object} props - Component props.
+ * @param {Array} props.items - List of note items.
+ * @param {Function} props.onDeleteItem - Callback to delete an item.
+ * @param {Function} props.onHandleToggleDone - Callback to toggle item status.
+ */
 function List({ items, onDeleteItem, onHandleToggleDone }) {
   return (
     <>

@@ -6,21 +6,37 @@ import NoteList from "./components/NoteList";
 import Select from "./components/Select";
 import Stats from "./components/Stats";
 
+/**
+ * Main application component.
+ * Manages the state and behavior of the note-taking application.
+ */
 function App() {
   const [notes, setNotes] = useState([]);
   const [sortBy, setSortBy] = useState("input");
 
+  /**
+   * Adds a new item to the notes list.
+   * @param {Object} item - The note item to add.
+   */
   function handleAddItems(item) {
     const newList = [...notes];
     newList.push(item);
     setNotes(newList);
   }
 
+  /**
+   * Deletes an item from the notes list by ID.
+   * @param {number} id - The ID of the note to delete.
+   */
   function handleDeleteItems(id) {
     const newList = notes.filter((note) => note.id !== id);
     setNotes(newList);
   }
 
+  /**
+   * Toggles the 'done' status of a note by ID.
+   * @param {number} id - The ID of the note to toggle.
+   */
   function handleToggleDone(id) {
     const updatedNotes = notes.map((item) => {
       if (item.id === id) {
@@ -29,17 +45,23 @@ function App() {
           done: !item.done,
         };
       }
-
       return item;
     });
 
     setNotes(updatedNotes);
   }
 
+  /**
+   * Sets the sorting criteria for the notes.
+   * @param {Event} e - The event triggered by changing the sort option.
+   */
   function handleSortBy(e) {
     setSortBy(e.target.value);
   }
 
+  /**
+   * Clears all notes after user confirmation.
+   */
   function handleClearData() {
     const notesEmpty =
       notes.length !== 0 &&

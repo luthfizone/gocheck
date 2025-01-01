@@ -1,9 +1,13 @@
+// Stats.jsx
+
 import PropsTypes from "prop-types";
 
+/**
+ * Stats component for displaying statistics about the notes.
+ * @param {Object} props - Component props.
+ * @param {Array} props.items - List of note items.
+ */
 function Stats({ items }) {
-  // derived state of notes from parent component
-  // get total checked
-
   const totalItems = items.length;
   const doneItems = items.filter((item) => item.done).length;
   const percentage = Math.round((doneItems / totalItems) * 100);
