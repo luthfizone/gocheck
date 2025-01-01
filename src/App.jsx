@@ -37,9 +37,11 @@ function App() {
   }
 
   function handleClearData() {
-    const confirm = window.confirm("Are you sure want to delete the notes?");
+    const notesEmpty =
+      notes.length !== 0 &&
+      `${window.confirm("Are you want to delete the nodes?")} `;
 
-    if (confirm) {
+    if (notesEmpty) {
       setNotes([]);
     }
   }
@@ -86,7 +88,7 @@ Select.propTypes = {
 };
 
 function Logo() {
-  return <span className="logo">GoCheck</span>;
+  return <span className="logo">GoCheck 📝</span>;
 }
 
 function Form({ onAddItem }) {
