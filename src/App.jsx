@@ -40,7 +40,20 @@ function App() {
         onDeleteItem={handleDeleteItems}
         onHandleToggleDone={handleToggleDone}
       />
+      <Select />
       <Stats items={notes} />
+    </div>
+  );
+}
+
+function Select() {
+  return (
+    <div className="actions">
+      <select>
+        <option value="input">Sort by input</option>
+        <option value="title">Sort by title</option>
+        <option value="status">Sort by status</option>
+      </select>
     </div>
   );
 }
