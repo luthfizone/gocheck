@@ -79,6 +79,12 @@ function Select({ sortBy, onSortBy, onClearData }) {
   );
 }
 
+Select.propTypes = {
+  sortBy: PropsTypes.string,
+  onSortBy: PropsTypes.func,
+  onClearData: PropsTypes.func,
+};
+
 function Logo() {
   return <span className="logo">GoCheck</span>;
 }
