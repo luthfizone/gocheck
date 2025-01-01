@@ -4,6 +4,7 @@ import PropsTypes from "prop-types";
 
 function App() {
   const [notes, setNotes] = useState([]);
+  const [sortBy, setSortBy] = useState("input");
 
   function handleAddItems(item) {
     const newList = [...notes];
@@ -31,6 +32,10 @@ function App() {
     setNotes(updatedNotes);
   }
 
+  function handleSortBy(e) {
+    setSortBy(e.target.value);
+  }
+
   return (
     <div className="app-container">
       <Logo />
@@ -39,17 +44,18 @@ function App() {
         items={notes}
         onDeleteItem={handleDeleteItems}
         onHandleToggleDone={handleToggleDone}
+        sortBy={sortBy}
       />
-      <Select />
+      <Select sortBy={sortBy} onSortBy={handleSortBy} />
       <Stats items={notes} />
     </div>
   );
 }
 
-function Select() {
+function Select({ sortBy, onSortBy }) {
   return (
     <div className="actions">
-      <select>
+      <select value={sortBy} onChange={onSortBy}>
         <option value="input">Sort by input</option>
         <option value="title">Sort by title</option>
         <option value="status">Sort by status</option>
@@ -102,12 +108,22 @@ Form.propTypes = {
   onAddItem: PropsTypes.func,
 };
 
-function NoteList({ items, onDeleteItem, onHandleToggleDone }) {
+function NoteList({ items, onDeleteItem, onHandleToggleDone, sortBy }) {
+  const sortedItems = [...items].sort((a, b) => {
+    if (sortBy === "input") {
+      return a.id - b.id;
+    } else if (sortBy === "title") {
+      return a.inputValue.localeCompare(b.inputValue);
+    } else if (sortBy === "status") {
+      return a.done - b.done;
+    }
+  });
+
   return (
     <div className="list">
       <ul>
         <List
-          items={items}
+          items={sortedItems}
           onDeleteItem={onDeleteItem}
           onHandleToggleDone={onHandleToggleDone}
         />
@@ -120,6 +136,7 @@ NoteList.propTypes = {
   items: PropsTypes.array.isRequired,
   onDeleteItem: PropsTypes.func.isRequired,
   onHandleToggleDone: PropsTypes.func.isRequired,
+  sortBy: PropsTypes.string.isRequired,
 };
 
 function List({ items, onDeleteItem, onHandleToggleDone }) {
