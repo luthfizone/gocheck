@@ -1,11 +1,6 @@
 import { useState } from "react";
 import PropsTypes from "prop-types";
 
-// Form.jsx
-
-import { useState } from "react";
-import PropsTypes from "prop-types";
-
 /**
  * Form component for adding new notes.
  * @param {Object} props - Component props.
